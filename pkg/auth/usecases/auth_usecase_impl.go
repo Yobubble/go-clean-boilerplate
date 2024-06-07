@@ -8,8 +8,8 @@ type authUseCase struct {
 
 // ValidateUser implements AuthUseCase.
 func (a *authUseCase) ValidateUser() (string, error) {
-	// call FindEmail
-	// call FindPassword
+	// TODO : call FindEmail
+	// TODO : call FindPassword
 	panic("unimplemented")
 }
 

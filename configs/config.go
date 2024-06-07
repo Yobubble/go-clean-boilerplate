@@ -18,7 +18,7 @@ type Database struct {
 	SSLMode  string
 }
 
-// depends on config.yaml
+// TODO : depends on config.yaml
 
 func LoadConfig() Config {
 	var config Config

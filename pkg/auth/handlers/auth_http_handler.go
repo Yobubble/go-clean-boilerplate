@@ -15,8 +15,8 @@ type authHttpHandler struct {
 // SignIn implements Handler.
 func (a *authHttpHandler) SignIn(c *fiber.Ctx) error {
 	fmt.Println(c.Path(), "SignIn")
-	// parse body
-	// call ValidateUser from usecase layer
+	// TODO : parse body
+	// TODO : call ValidateUser from usecase layer
 	return utils.Response(c, nil, "", fiber.StatusOK, "")
 }
 
