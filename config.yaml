@@ -1,0 +1,12 @@
+app:
+  server:
+    port: 7070
+
+database:
+  host: localhost
+  port: 5432
+  name: mydb
+  user: myuser
+  password: mypassword
+  sslmode: disable
+# more configs...
