@@ -1,6 +1,10 @@
 package migrations
 
-import "gorm.io/gorm"
+import (
+	"Github.com/Yobubble/go-clean-boilerplate/pkg/entities"
+	"Github.com/Yobubble/go-clean-boilerplate/pkg/utils/data"
+	"gorm.io/gorm"
+)
 
 type postgresqlMigration struct {
 	db *gorm.DB
@@ -8,12 +12,20 @@ type postgresqlMigration struct {
 
 // MockDataMigrate implements Migration.
 func (p *postgresqlMigration) MockDataMigrate() error {
-	panic("unimplemented")
+	result := p.db.Create(data.Users)
+	if result.Error != nil {
+		return result.Error
+	}
+	return nil
 }
 
 // TableMigrate implements Migration.
 func (p *postgresqlMigration) TableMigrate() error {
-	panic("unimplemented")
+	err := p.db.AutoMigrate(entities.User{})
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 func NewPostgresqlMigration(db *gorm.DB) Migration {

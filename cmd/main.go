@@ -14,5 +14,5 @@ func main() {
 	migrations.NewPostgresqlMigration(db).TableMigrate()
 	migrations.NewPostgresqlMigration(db).MockDataMigrate()
 
-	servers.NewFiberServer(db, cfg).Start()
+	servers.NewGinServer(cfg, db).Start()
 }
