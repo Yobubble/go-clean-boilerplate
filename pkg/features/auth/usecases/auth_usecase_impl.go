@@ -1,13 +1,9 @@
 package usecases
 
 import (
-	"os"
-	"time"
-
 	"Github.com/Yobubble/go-clean-boilerplate/pkg/features/auth/models"
 	"Github.com/Yobubble/go-clean-boilerplate/pkg/features/auth/repositories"
-	"github.com/golang-jwt/jwt/v5"
-	"github.com/joho/godotenv"
+	"Github.com/Yobubble/go-clean-boilerplate/pkg/utils/jwt"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -40,7 +36,7 @@ func (a *authUseCase) ValidateUser(user models.SignInBodyModel) (string, error) 
 		return "", err
 	}
 
-	token, err := createToken(username)
+	token, err := jwt.CreateToken(username)
 	if err != nil {
 		return "", err
 	}
@@ -52,22 +48,4 @@ func NewAuthUseCase(repo repositories.AuthRepository) AuthUseCase {
 	return &authUseCase{
 		repo: repo,
 	}
-}
-
-func createToken(username string) (string, error) {
-	token := jwt.NewWithClaims(jwt.SigningMethodHS256,
-		jwt.MapClaims{
-			"username": username,
-			"exp":      time.Now().Add(time.Hour * 24).Unix(),
-		},
-	)
-
-	godotenv.Load()
-
-	tokenString, err := token.SignedString([]byte(os.Getenv("SECRET_KEY")))
-	if err != nil {
-		return "", err
-	}
-
-	return tokenString, nil
 }
