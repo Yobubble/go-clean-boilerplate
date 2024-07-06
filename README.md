@@ -4,6 +4,7 @@
 
 ## Author's Note
 - An improved version of Go web service clean architecture from using Fiber to Gin.
+- mostly inpired by (by [Rayato159](https://github.com/Rayato159))
 
 ## Setup Instructions (Ready to Use)
 
