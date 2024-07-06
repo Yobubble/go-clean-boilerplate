@@ -1,5 +1,6 @@
 package constants
 
 const (
-	InsertNewUserSuccess = "Create New User Successfully"
+	SignUpSuccess = "Create New User Successfully"
+	SignInSuccess = "Token Generated"
 )

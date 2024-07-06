@@ -39,7 +39,7 @@ func (a *authHttpHandler) SignUp(c *gin.Context) {
 		commons.Response(c, nil, constants.InsertUserError, http.StatusInternalServerError, err.Error())
 		return
 	}
-	commons.Response(c, nil, constants.InsertNewUserSuccess, http.StatusOK, "")
+	commons.Response(c, nil, constants.SignUpSuccess, http.StatusOK, "")
 }
 
 // SignIn implements Handler.
@@ -50,6 +50,7 @@ func (a *authHttpHandler) SignIn(c *gin.Context) {
 
 	if err := c.BindJSON(&signInBody); err != nil {
 		commons.Response(c, nil, commons.BodyParseError, http.StatusBadRequest, err.Error())
+		return
 	}
 
 	if err := validate.Struct(signInBody); err != nil {
@@ -61,7 +62,7 @@ func (a *authHttpHandler) SignIn(c *gin.Context) {
 	if token, err := a.usecase.ValidateUser(signInBody); err != nil {
 		commons.Response(c, nil, constants.ValidateUserError, http.StatusUnauthorized, err.Error())
 	} else {
-		commons.Response(c, token, "", http.StatusOK, "")
+		commons.Response(c, token, constants.SignInSuccess, http.StatusOK, "")
 	}
 }
 
