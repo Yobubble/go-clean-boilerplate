@@ -1,4 +1,4 @@
-package commons
+package constants
 
 const (
 	BodyParseError           = "missing body or fields"
