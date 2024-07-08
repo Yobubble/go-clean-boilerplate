@@ -5,6 +5,7 @@ import "github.com/spf13/viper"
 type Config struct {
 	App App
 	DB  Database
+	Client Client
 }
 type App struct {
 	Port int
@@ -18,7 +19,9 @@ type Database struct {
 	SSLMode  string
 }
 
-// TODO : depends on config.yaml
+type Client struct {
+	AllowedClient []string
+}
 
 func LoadConfig() Config {
 	var config Config
@@ -37,6 +40,7 @@ func LoadConfig() Config {
 	config.DB.User = viper.GetString("database.user")
 	config.DB.Password = viper.GetString("database.password")
 	config.DB.SSLMode = viper.GetString("database.sslmode")
-
+	config.Client.AllowedClient = viper.GetStringSlice("client.allowed")
+	
 	return config
 }

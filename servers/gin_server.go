@@ -7,6 +7,7 @@ import (
 	"Github.com/Yobubble/go-clean-boilerplate/pkg/features/auth/handlers"
 	"Github.com/Yobubble/go-clean-boilerplate/pkg/features/auth/repositories"
 	"Github.com/Yobubble/go-clean-boilerplate/pkg/features/auth/usecases"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 )
@@ -30,6 +31,10 @@ func (g *ginServer) InitAuthHttpHandler() {
 
 // Start implements Server.
 func (g *ginServer) Start() {
+	corsConfig := cors.DefaultConfig()
+	corsConfig.AllowOrigins = g.cfg.Client.AllowedClient
+	g.app.Use(cors.New(corsConfig))
+
 	g.InitAuthHttpHandler()
 	port := fmt.Sprintf(":%d", g.cfg.App.Port)
 	g.app.Run(port)

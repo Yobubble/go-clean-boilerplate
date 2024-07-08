@@ -9,4 +9,10 @@ database:
   user: myuser
   password: mypassword
   sslmode: disable
+
+client:
+  allowed:
+  - http://localhost:3000
+  - http://localhost:3001
+
 # more configs possible...
