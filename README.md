@@ -31,8 +31,13 @@ _Simple Go web service clean architecture boilerplate_
      - **Password:** mypassword
 
 4. **Customize Your Database**
+
    - Mock Data: `/pkg/utils/data/`
    - Entities (Tables): `/pkg/entities/`
+
+5. **Complete all TODO**
+   - Please see the TODO list from the keyword search or any extension and complete all the tasks.
+   - If you are already satisfied with the default settings, then feel free to remove them.
 
 ## Features
 
@@ -41,5 +46,7 @@ _Simple Go web service clean architecture boilerplate_
 - **User Table**
 - **Gin Framework**
 - **CORS**
-- **Struct Validation** (by [github.com/go-playground/validator/v10](https://github.com/go-playground/validator))
+- **Struct Validation**
 - **Digestive Configuration** (`/config.yaml` - any additional configurations can be added here)
+- **Automatically Build, Test, and Push to DockerHub when Pushed (Thanks to GitHub Action)**
+- **Automatically Make Release when git tag is created and pushed**

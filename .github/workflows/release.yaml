@@ -1,0 +1,44 @@
+name: Version Release
+
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get git tag
+        id: tag
+        uses: devops-actions/action-get-tag@v1.0.3
+        with:
+          strip_v: false # Optional: Strip the leading 'v' from the tag
+          default: v0.0.0 # Optional: Default version when tag not found
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          # TODO : add your dockerhub username and token to github secrets
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          # TODO : incase your github repository is private
+          # secrets: |
+          #   GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
+
+      - name: Build and push latest
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          # TODO : don't forget to rename the image name and tag
+          tags: dockerUsername/repoName:${{ steps.tag.outputs.tag }}

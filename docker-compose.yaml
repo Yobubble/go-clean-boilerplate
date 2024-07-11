@@ -5,9 +5,10 @@ services:
     image: postgres:latest
     container_name: postgres
     environment:
-      POSTGRES_DB: mydb # should be sync with config.yaml
-      POSTGRES_USER: myuser # should be sync with config.yaml
-      POSTGRES_PASSWORD: mypassword # should be sync with config.yaml
+      # TODO : database configs here
+      POSTGRES_DB: mydb
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
     ports:
