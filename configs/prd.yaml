@@ -1,4 +1,4 @@
-# TODO : your configs here
+# TODO : Add production configuration
 app:
   server:
     port: 7070
@@ -15,4 +15,3 @@ client:
   allowed:
     - http://localhost:3000
     - http://localhost:3001
-# more configs possible...

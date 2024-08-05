@@ -1,2 +1,2 @@
-# jwt signature key
+NODE_ENV=
 SECRET_KEY=

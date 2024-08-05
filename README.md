@@ -43,10 +43,6 @@ _Simple Go web service clean architecture boilerplate_
 
 - **JWT Authentication and Authorization**
 - **Basic Auth** (Sign-in, Sign-up)
-- **User Table**
-- **Gin Framework**
 - **CORS**
-- **Struct Validation**
 - **Digestive Configuration** (`/config.yaml` - any additional configurations can be added here)
-- **Automatically Build, Test, and Push to DockerHub when Pushed (Thanks to GitHub Action)**
-- **Automatically Make Release when git tag is created and pushed**
+- **Automatically Build, Test, and Push to DockerHub when Pushed (GitHub Action)**

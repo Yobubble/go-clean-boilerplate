@@ -1,6 +1,11 @@
 package configs
 
-import "github.com/spf13/viper"
+import (
+	"os"
+
+	"github.com/joho/godotenv"
+	"github.com/spf13/viper"
+)
 
 type Config struct {
 	App App
@@ -25,8 +30,11 @@ type Client struct {
 
 func LoadConfig() Config {
 	var config Config
-	viper.SetConfigFile("config.yaml")
-	viper.AddConfigPath("./")
+	godotenv.Load()
+
+	viper.SetConfigName(os.Getenv("NODE_ENV"))
+	viper.SetConfigType("yaml")
+	viper.AddConfigPath("configs")
 
 	configErr := viper.ReadInConfig()
 	if configErr != nil {
