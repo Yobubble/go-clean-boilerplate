@@ -12,7 +12,8 @@ _Simple Go web service clean architecture boilerplate_
 
 1. **Rename and Configure Environment File**
 
-- Edit `dev.yaml`, `stg.yaml` and `prd.yaml` for development, staging and production environment
+- Edit `dev.yaml`, `stg.yaml` and `prd.yaml` in `configs` folder for development, staging and production configuration.
+- You may edit `docker-compose.yaml` to match your config.
 - Change the file named `env` to `.env` and fill in the `SECRET_KEY` and `NODE_ENV`, which is the JWT signature key and environment respectively for the project.
 
 2. **Start Database with Docker**
@@ -32,7 +33,7 @@ _Simple Go web service clean architecture boilerplate_
    - **User:** myuser
    - **Password:** mypassword
 
-- so I use Postgresql as default database, you may implement yours in "databases" folder
+- I use Postgresql as default database, you may implement yours in `databases` folder
 
 1. **Database Setup**
 
