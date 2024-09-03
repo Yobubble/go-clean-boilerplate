@@ -3,7 +3,9 @@ package configs
 import (
 	"os"
 
+	"Github.com/Yobubble/go-clean-boilerplate/pkg/utils/commons"
 	"github.com/joho/godotenv"
+	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 )
 
@@ -38,7 +40,9 @@ func LoadConfig() Config {
 
 	configErr := viper.ReadInConfig()
 	if configErr != nil {
-		panic(configErr)
+		commons.Log.WithFields(logrus.Fields{
+			"error": configErr,
+		}).Panic()
 	}
 
 	config.App.Port = viper.GetInt("app.server.port")
