@@ -7,6 +7,8 @@ import (
 	"time"
 
 	"Github.com/Yobubble/go-clean-boilerplate/configs"
+	"Github.com/Yobubble/go-clean-boilerplate/pkg/utils/commons"
+	"github.com/sirupsen/logrus"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -47,7 +49,9 @@ func NewPostgresqlDatabase(cfg configs.Config) Database {
 	})
 
 	if dbErr != nil {
-		panic(dbErr)
+		commons.Log.WithFields(logrus.Fields{
+			"error": dbErr,
+		}).Panic()
 	}
 
 	fmt.Printf("Connect to postgres with port : %d", cfg.DB.Port)
